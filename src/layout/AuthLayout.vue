@@ -116,20 +116,20 @@
     </div>
 </template>
 <script>
-  import { SlideYUpTransition } from 'vue2-transitions'
+import { SlideYUpTransition } from 'vue2-transitions'
 
-  export default {
-    name: 'auth-layout',
-    components: {
-      SlideYUpTransition
-    },
-    data() {
-      return {
-        year: new Date().getFullYear(),
-        showMenu: false
-      }
+export default {
+  name: 'auth-layout',
+  components: {
+    SlideYUpTransition
+  },
+  data () {
+    return {
+      year: new Date().getFullYear(),
+      showMenu: false
     }
   }
+}
 </script>
 <style>
 </style>

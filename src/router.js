@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+// import Home from './views/Home.vue'
 import Api from './views/Api.vue'
 import DashboardLayout from '@/layout/DashboardLayout'
 import AuthLayout from '@/layout/AuthLayout'
@@ -13,7 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: AuthLayout
     },
     {
       path: '/api',

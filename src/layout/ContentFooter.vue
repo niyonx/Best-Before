@@ -28,11 +28,11 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       year: new Date().getFullYear()
-    };
+    }
   }
-};
+}
 </script>
 <style></style>
