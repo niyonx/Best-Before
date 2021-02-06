@@ -1,7 +1,7 @@
 """ Security Related things """
 from functools import wraps
 from flask import request
-from flask_restplus import abort
+from flask_restx import abort
 
 
 def require_auth(func):
