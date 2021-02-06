@@ -103,7 +103,7 @@ Before getting started, you should have the following installed and running:
 * Install JS dependencies
 
 	```
-	$ yarn install
+	$ npm install
 	```
 
 
@@ -118,7 +118,7 @@ $ python run.py
 From another tab in the same directory, start the webpack dev server:
 
 ```
-$ yarn serve
+$ npm run serve
 ```
 
 The Vuejs application will be served from `localhost:8080` and the Flask Api
