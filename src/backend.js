@@ -3,7 +3,7 @@ import axios from 'axios'
 let $axios = axios.create({
   baseURL: '/api/',
   timeout: 5000,
-  headers: {'Content-Type': 'application/json'}
+  headers: { 'Content-Type': 'application/json' }
 })
 
 // Request Interceptor

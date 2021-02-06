@@ -11,6 +11,7 @@
         <img src="@/assets/flask-logo.png">
       </p>
     </div>
+    <notifications></notifications>
     <router-view/>
 
     <!-- FORK Me -->
