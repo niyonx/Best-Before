@@ -80,30 +80,30 @@
                     </slot>
                 </ul>
                 <!--Divider-->
-                <hr class="my-3">
+<!--                <hr class="my-3">-->
                 <!--Heading-->
-                <h6 class="navbar-heading text-muted">Documentation</h6>
-                <!--Navigation-->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation">
-                            <i class="ni ni-spaceship"></i> Getting started
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/foundation/colors.html">
-                            <i class="ni ni-palette"></i> Foundation
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/components/alerts.html">
-                            <i class="ni ni-ui-04"></i> Components
-                        </a>
-                    </li>
-                </ul>
+<!--                <h6 class="navbar-heading text-muted">Documentation</h6>-->
+<!--                &lt;!&ndash;Navigation&ndash;&gt;-->
+<!--                <ul class="navbar-nav mb-md-3">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link"-->
+<!--                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation">-->
+<!--                            <i class="ni ni-spaceship"></i> Getting started-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link"-->
+<!--                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/foundation/colors.html">-->
+<!--                            <i class="ni ni-palette"></i> Foundation-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link"-->
+<!--                           href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/components/alerts.html">-->
+<!--                            <i class="ni ni-ui-04"></i> Components-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
             </div>
             </div>
     </nav>
