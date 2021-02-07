@@ -49,9 +49,8 @@ export default {
   },
 
   createProduct (product_name = '', product_brand = '', expiry_date = '', user_id = '') {
-    return $axios.get('createProduct/' + product_name + '/' + product_brand + '/' + expiry_date+ '/' + user_id)
+    return $axios.get('createProduct/' + product_name + '/' + product_brand + '/' + expiry_date + '/' + user_id)
       .then(response => response.data)
   }
 
-  
 }
