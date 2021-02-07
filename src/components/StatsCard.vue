@@ -27,23 +27,23 @@
   </card>
 </template>
 <script>
-  import Card from './Card.vue';
+import Card from './Card.vue'
 
-  export default {
-    name: 'stats-card',
-    components: {
-      Card
+export default {
+  name: 'stats-card',
+  components: {
+    Card
+  },
+  props: {
+    type: {
+      type: String,
+      default: 'primary'
     },
-    props: {
-      type: {
-        type: String,
-        default: 'primary'
-      },
-      icon: String,
-      title: String,
-      subTitle: String,
-      iconClasses: [String, Array]
-    }
-  };
+    icon: String,
+    title: String,
+    subTitle: String,
+    iconClasses: [String, Array]
+  }
+}
 </script>
 <style></style>

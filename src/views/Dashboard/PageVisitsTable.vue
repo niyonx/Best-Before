@@ -45,50 +45,50 @@
   </div>
 </template>
 <script>
-  export default {
-    name: 'page-visits-table',
-    data() {
-      return {
-        tableData: [
-          {
-            page: '/argon/',
-            visitors: '4,569',
-            unique: '340',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'up'
-          },
-          {
-            page: '/argon/index.html',
-            visitors: '3,985',
-            unique: '319',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'down'
-          },
-          {
-            page: '/argon/charts.html',
-            visitors: '3,513',
-            unique: '294',
-            bounceRate: '36,49%',
-            bounceRateDirection: 'down'
-          },
-          {
-            page: '/argon/tables.html',
-            visitors: '2,050',
-            unique: '147',
-            bounceRate: '50,87%',
-            bounceRateDirection: 'up'
-          },
-          {
-            page: '/argon/profile.html',
-            visitors: '1,795',
-            unique: '190',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'down'
-          }
-        ]
-      }
+export default {
+  name: 'page-visits-table',
+  data () {
+    return {
+      tableData: [
+        {
+          page: '/argon/',
+          visitors: '4,569',
+          unique: '340',
+          bounceRate: '46,53%',
+          bounceRateDirection: 'up'
+        },
+        {
+          page: '/argon/index.html',
+          visitors: '3,985',
+          unique: '319',
+          bounceRate: '46,53%',
+          bounceRateDirection: 'down'
+        },
+        {
+          page: '/argon/charts.html',
+          visitors: '3,513',
+          unique: '294',
+          bounceRate: '36,49%',
+          bounceRateDirection: 'down'
+        },
+        {
+          page: '/argon/tables.html',
+          visitors: '2,050',
+          unique: '147',
+          bounceRate: '50,87%',
+          bounceRateDirection: 'up'
+        },
+        {
+          page: '/argon/profile.html',
+          visitors: '1,795',
+          unique: '190',
+          bounceRate: '46,53%',
+          bounceRateDirection: 'down'
+        }
+      ]
     }
   }
+}
 </script>
 <style>
 </style>

@@ -1,7 +1,7 @@
-import { parseOptions } from "@/components/Charts/optionHelpers";
+import { parseOptions } from '@/components/Charts/optionHelpers'
 
 export const Charts = {
-  mode: 'light',//(themeMode) ? themeMode : 'light';
+  mode: 'light', // (themeMode) ? themeMode : 'light';
   fonts: {
     base: 'Open Sans'
   },
@@ -28,20 +28,20 @@ export const Charts = {
     },
     black: '#12263F',
     white: '#FFFFFF',
-    transparent: 'transparent',
+    transparent: 'transparent'
   }
-};
+}
 
-function chartOptions(Chart) {
-  let { colors, mode, fonts } = Charts;
+function chartOptions (Chart) {
+  let { colors, mode, fonts } = Charts
   // Options
   let options = {
     defaults: {
       global: {
         responsive: true,
         maintainAspectRatio: false,
-        defaultColor: (mode == 'dark') ? colors.gray[700] : colors.gray[600],
-        defaultFontColor: (mode == 'dark') ? colors.gray[700] : colors.gray[600],
+        defaultColor: (mode === 'dark') ? colors.gray[700] : colors.gray[600],
+        defaultFontColor: (mode === 'dark') ? colors.gray[700] : colors.gray[600],
         defaultFontFamily: fonts.base,
         defaultFontSize: 13,
         layout: {
@@ -61,7 +61,7 @@ function chartOptions(Chart) {
             backgroundColor: colors.theme['primary']
           },
           line: {
-            tension: .4,
+            tension: 0.4,
             borderWidth: 4,
             borderColor: colors.theme['primary'],
             backgroundColor: colors.transparent,
@@ -72,48 +72,48 @@ function chartOptions(Chart) {
           },
           arc: {
             backgroundColor: colors.theme['primary'],
-            borderColor: (mode == 'dark') ? colors.gray[800] : colors.white,
+            borderColor: (mode === 'dark') ? colors.gray[800] : colors.white,
             borderWidth: 4
           }
         },
         tooltips: {
           enabled: true,
           mode: 'index',
-          intersect: false,
+          intersect: false
         }
       },
       doughnut: {
         cutoutPercentage: 83,
         legendCallback: function (chart) {
-          let data = chart.data;
-          let content = '';
+          let data = chart.data
+          let content = ''
 
           data.labels.forEach(function (label, index) {
-            let bgColor = data.datasets[0].backgroundColor[index];
+            let bgColor = data.datasets[0].backgroundColor[index]
 
-            content += '<span class="chart-legend-item">';
-            content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>';
-            content += label;
-            content += '</span>';
-          });
+            content += '<span class="chart-legend-item">'
+            content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>'
+            content += label
+            content += '</span>'
+          })
 
-          return content;
+          return content
         }
       }
     }
-  };
+  }
 
   // yAxes
   Chart.scaleService.updateScaleDefaults('linear', {
     gridLines: {
       borderDash: [2],
       borderDashOffset: [2],
-      color: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
+      color: (mode === 'dark') ? colors.gray[900] : colors.gray[300],
       drawBorder: false,
       drawTicks: false,
       lineWidth: 0,
       zeroLineWidth: 0,
-      zeroLineColor: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
+      zeroLineColor: (mode === 'dark') ? colors.gray[900] : colors.gray[300],
       zeroLineBorderDash: [2],
       zeroLineBorderDashOffset: [2]
     },
@@ -126,7 +126,7 @@ function chartOptions(Chart) {
         }
       }
     }
-  });
+  })
 
   // xAxes
   Chart.scaleService.updateScaleDefaults('category', {
@@ -139,13 +139,13 @@ function chartOptions(Chart) {
       padding: 20
     },
     maxBarThickness: 10
-  });
+  })
 
-  return options;
+  return options
 }
 
-export function initGlobalOptions(Chart) {
-  parseOptions(Chart, chartOptions(Chart));
+export function initGlobalOptions (Chart) {
+  parseOptions(Chart, chartOptions(Chart))
 }
 
 export const basicOptions = {
@@ -154,7 +154,7 @@ export const basicOptions = {
     display: false
   },
   responsive: true
-};
+}
 export let blueChartOptions = {
   scales: {
     yAxes: [{
@@ -163,15 +163,15 @@ export let blueChartOptions = {
         zeroLineColor: Charts.colors.gray[700]
       },
       ticks: {
-        callback: function(value) {
+        callback: function (value) {
           if (!(value % 10)) {
-            return '$' + value + 'k';
+            return '$' + value + 'k'
           }
         }
       }
     }]
   }
-};
+}
 
 export let lineChartOptionsBlue = {
   ...basicOptions,
@@ -219,7 +219,7 @@ export let lineChartOptionsBlue = {
       }
     ]
   }
-};
+}
 
 export let barChartOptionsGradient = {
   ...basicOptions,
@@ -265,7 +265,7 @@ export let barChartOptionsGradient = {
       }
     ]
   }
-};
+}
 
 export let pieChartOptions = {
   ...basicOptions,
@@ -311,7 +311,7 @@ export let pieChartOptions = {
       }
     ]
   }
-};
+}
 
 export let purpleChartOptions = {
   ...basicOptions,
@@ -358,7 +358,7 @@ export let purpleChartOptions = {
       }
     ]
   }
-};
+}
 
 export let orangeChartOptions = {
   ...basicOptions,
@@ -405,7 +405,7 @@ export let orangeChartOptions = {
       }
     ]
   }
-};
+}
 export let greenChartOptions = {
   ...basicOptions,
   tooltips: {
@@ -451,7 +451,7 @@ export let greenChartOptions = {
       }
     ]
   }
-};
+}
 
 export let barChartOptions = {
   ...basicOptions,
@@ -495,4 +495,4 @@ export let barChartOptions = {
       }
     ]
   }
-};
+}

@@ -8,8 +8,9 @@
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Add a product</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+                        <h1 class="display-2 text-white">Add an article</h1>
+                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made
+                            with your work and manage your projects or assigned tasks</p>
                     </div>
                 </div>
             </div>
@@ -23,7 +24,7 @@
                         <div slot="header" class="bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">My product</h3>
+                                    <h3 class="mb-0">My article</h3>
                                 </div>
                                 <div class="col-4 text-right">
                                     <base-button type="primary" size="sm" icon="ni ni-fat-add">Add</base-button>
@@ -58,18 +59,32 @@
                                         <div class="col-lg-6">
                                             <base-input alternative=""
                                                         label="Expiry Date"
-                                                        placeholder="YYYY/MM/DD"
+                                                        placeholder="MM-DD-YYYY"
                                                         input-classes="form-control-alternative"
                                                         v-model="model.expiryDate"
                                             />
                                         </div>
                                         <div class="col-lg-3">
-                                             <p class="form-control-label">Date</p>
-                                             <base-button type="primary" size="sm" icon="ni ni-image">Upload</base-button>
-                                         </div>
+                                            <p class="form-control-label">Date</p>
+                                            <base-button :loading="isSelecting" @click="onButtonClick" type="primary"
+                                                         size="sm" :icon="icon">Upload
+                                            </base-button>
+                                            <input ref="uploader"
+                                                   class="d-none"
+                                                   type="file"
+                                                   accept="image/*"
+                                                   @change="onFileChanged">
+                                        </div>
                                         <div class="col-lg-3">
-                                           <p class="form-control-label">Barcode</p>
-                                            <base-button type="primary"  size="sm" icon="ni ni-image">Upload</base-button>
+                                            <p class="form-control-label">Barcode</p>
+                                            <base-button :loading="isSelecting" @click="onButtonClick" type="primary"
+                                                         size="sm" :icon="icon"> {{buttonText}}
+                                            </base-button>
+                                            <input ref="uploader"
+                                                   class="d-none"
+                                                   type="file"
+                                                   accept="image/*"
+                                                   @change="onFileChanged">
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +105,34 @@ export default {
         name: '',
         brand: '',
         expiryDate: ''
-      }
+      },
+      defaultButtonText: 'Upload',
+      defaultIcon: 'ni ni-cloud-upload-96',
+      uploadedIcon: 'ni ni-image',
+      selectedFile: null,
+      isSelecting: false
+    }
+  },
+  computed: {
+    buttonText () {
+      return this.selectedFile ? this.selectedFile.name : this.defaultButtonText
+    },
+    icon () {
+      return this.selectedFile ? this.uploadedIcon : this.defaultIcon
+    }
+  },
+  methods: {
+    onButtonClick () {
+      this.isSelecting = true
+      window.addEventListener('focus', () => {
+        this.isSelecting = false
+      }, { once: true })
+
+      this.$refs.uploader.click()
+    },
+    async onFileChanged (e) {
+      this.selectedFile = e.target.files[0]
+      // Calling barcode api
     }
   }
 }
