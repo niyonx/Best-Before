@@ -28,39 +28,39 @@
     </fade-transition>
 </template>
 <script>
-import { FadeTransition } from "vue2-transitions";
+import { FadeTransition } from 'vue2-transitions'
 
 export default {
-  name: "base-alert",
+  name: 'base-alert',
   components: {
     FadeTransition
   },
   props: {
     type: {
       type: String,
-      default: "default",
-      description: "Alert type"
+      default: 'default',
+      description: 'Alert type'
     },
     icon: {
       type: String,
-      default: "",
-      description: "Alert icon. Will be overwritten by default slot"
+      default: '',
+      description: 'Alert icon. Will be overwritten by default slot'
     },
     dismissible: {
       type: Boolean,
       default: false,
-      description: "Whether alert is closes when clicking"
+      description: 'Whether alert is closes when clicking'
     }
   },
-  data() {
+  data () {
     return {
       visible: true
-    };
+    }
   },
   methods: {
-    dismissAlert() {
-      this.visible = false;
+    dismissAlert () {
+      this.visible = false
     }
   }
-};
+}
 </script>

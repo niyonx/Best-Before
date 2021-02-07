@@ -1,5 +1,5 @@
-import { Line, mixins } from 'vue-chartjs';
-import globalOptionsMixin from "@/components/Charts/globalOptionsMixin";
+import { Line, mixins } from 'vue-chartjs'
+import globalOptionsMixin from '@/components/Charts/globalOptionsMixin'
 
 export default {
   name: 'line-chart',
@@ -11,20 +11,20 @@ export default {
       default: () => ({})
     }
   },
-  data() {
+  data () {
     return {
       ctx: null
-    };
+    }
   },
-  mounted() {
+  mounted () {
     this.$watch(
       'chartData',
       (newVal, oldVal) => {
         if (!oldVal) {
-          this.renderChart(this.chartData, this.extraOptions);
+          this.renderChart(this.chartData, this.extraOptions)
         }
       },
       { immediate: true }
-    );
+    )
   }
-};
+}

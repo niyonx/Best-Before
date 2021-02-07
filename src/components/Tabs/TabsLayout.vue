@@ -13,6 +13,6 @@
 
 <script>
 export default {
-  name: "tabs-layout"
-};
+  name: 'tabs-layout'
+}
 </script>

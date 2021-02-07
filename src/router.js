@@ -39,9 +39,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue')
         },
         {
-          path: '/product',
-          name: 'add product',
-          component: () => import(/* webpackChunkName: "demo" */ './views/ProductForm.vue')
+          path: '/new_article',
+          name: 'new article',
+          component: () => import(/* webpackChunkName: "demo" */ './views/ArticleForm.vue')
         },
         {
           path: '/maps',
@@ -49,8 +49,8 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Maps.vue')
         },
         {
-          path: '/tables',
-          name: 'tables',
+          path: '/lists',
+          name: '',
           component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
         }
       ]

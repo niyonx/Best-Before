@@ -14,48 +14,48 @@
   </div>
 </template>
 <script>
-import { randomString } from "./stringUtils";
+import { randomString } from './stringUtils'
 
 export default {
-  name: "base-checkbox",
+  name: 'base-checkbox',
   model: {
-    prop: "checked"
+    prop: 'checked'
   },
   props: {
     checked: {
       type: [Array, Boolean],
-      description: "Whether checkbox is checked"
+      description: 'Whether checkbox is checked'
     },
     disabled: {
       type: Boolean,
-      description: "Whether checkbox is disabled"
+      description: 'Whether checkbox is disabled'
     },
     inline: {
       type: Boolean,
-      description: "Whether checkbox is inline"
+      description: 'Whether checkbox is inline'
     }
   },
-  data() {
+  data () {
     return {
-      cbId: "",
+      cbId: '',
       touched: false
-    };
+    }
   },
   computed: {
     model: {
-      get() {
-        return this.checked;
+      get () {
+        return this.checked
       },
-      set(check) {
+      set (check) {
         if (!this.touched) {
-          this.touched = true;
+          this.touched = true
         }
-        this.$emit("input", check);
+        this.$emit('input', check)
       }
     }
   },
-  mounted() {
+  mounted () {
     this.cbId = randomString()
   }
-};
+}
 </script>
