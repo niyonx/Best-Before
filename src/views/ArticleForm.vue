@@ -108,7 +108,7 @@ export default {
         expiryDate: ''
       },
       defaultButtonText: 'Upload',
-      defaultIcon: 'ni ni-cloud-upload-96',
+      defaultIcon: 'fa fa-upload',
       uploadedIcon: 'ni ni-image',
       selectedExpiryFile: null,
       selectedBarcodeFile: null,
