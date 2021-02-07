@@ -10,6 +10,9 @@ from flask_restx import Resource
 from .security import require_auth
 from . import api_rest
 
+from .barcode import *
+import os
+
 
 class SecureResource(Resource):
     """ Calls require_auth decorator on all requests """
@@ -36,3 +39,24 @@ class SecureResourceOne(SecureResource):
     def get(self, resource_id):
         timestamp = datetime.utcnow().isoformat()
         return {'timestamp': timestamp}
+
+
+@api_rest.route('/uploadBarcode')
+class UploadBarcode(Resource):
+    def post(self):
+        if 'file' not in request.files:
+            return 'Please upload file', 400
+
+        file = request.files['file']
+        if file.filename == '':
+            return 'No selected file', 400
+
+        root_dir = os.getcwd()
+        img = Image.open(file)
+        
+        barcode_id = read_image_barcode(img)
+
+        product_info = get_product_info(barcode_id)
+
+        return product_info
+
