@@ -48,24 +48,6 @@
                     <div class="card shadow">
                         <div class="card-header bg-transparent">
                             <ProjectsTable></ProjectsTable>
-<!--                        </div>-->
-<!--                        <div class="card-body">-->
-<!--                            <div class="row icon-examples">-->
-<!--                                <div class="col-lg-3 col-md-6"-->
-<!--                                     v-for="(icon, index) in icons" :key="icon.name + index">-->
-<!--                                    <button type="button"-->
-<!--                                            v-b-tooltip.hover.top-->
-<!--                                            :title="icon.name"-->
-<!--                                            v-clipboard:copy="icon.name"-->
-<!--                                            v-clipboard:success="onCopy"-->
-<!--                                            class="btn-icon-clipboard" data-clipboard-text="air-baloon">-->
-<!--                                        <div>-->
-<!--                                            <i :class="icon.name"></i>-->
-<!--                                            <span>{{icon.name.substring(6)}}</span>-->
-<!--                                        </div>-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </div>-->
                         </div>
                     </div>
                 </div>
