@@ -21,7 +21,7 @@ export default new Router({
       component: Api
     },
     {
-      path: '/',
+      path: '/dashboard',
       redirect: 'dashboard',
       component: DashboardLayout,
       children: [

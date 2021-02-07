@@ -4,7 +4,7 @@
             <!-- Card stats -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
+                    <stats-card title="Total Articles"
                                 type="gradient-red"
                                 sub-title="350,897"
                                 icon="ni ni-active-40"
@@ -18,7 +18,7 @@
                     </stats-card>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
+                    <stats-card title="Total Expirations"
                                 type="gradient-orange"
                                 sub-title="2,356"
                                 icon="ni ni-chart-pie-35"
@@ -32,7 +32,7 @@
                     </stats-card>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
+                    <stats-card title="Total Warnings"
                                 type="gradient-green"
                                 sub-title="924"
                                 icon="ni ni-money-coins"
@@ -47,7 +47,7 @@
 
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Performance"
+                    <stats-card title="Total Safe"
                                 type="gradient-info"
                                 sub-title="49,65%"
                                 icon="ni ni-chart-bar-32"

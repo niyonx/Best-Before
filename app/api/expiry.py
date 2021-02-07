@@ -14,7 +14,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="credentials.json"
 
 def detect_text(img):
     """Detects text in the file."""
-  
+
     from google.cloud import vision
     import io
     client = vision.ImageAnnotatorClient()
@@ -24,10 +24,10 @@ def detect_text(img):
     # with io.open(img, 'rb') as image_file:
     #     img = image_file.read()
 
-    img = Image.fromarray(img, 'RGB')
-    img_byte_arr = io.BytesIO()
-    img.save(img_byte_arr, format='PNG')
-    img_byte_arr = img_byte_arr.getvalue()
+    # img = Image.fromarray(img, 'RGB')
+    # img_byte_arr = io.BytesIO()
+    img.save(img, format='PNG')
+    img_byte_arr = img.getvalue()
 
     image = vision.Image(content=img_byte_arr)
 
@@ -60,7 +60,7 @@ def replace_MM_to_Full(text):
 
     for word, initial in months_expiry.items():
         text = text.replace(word, initial)
-      
+
     return text
 
 def find_expiry_date(img):
