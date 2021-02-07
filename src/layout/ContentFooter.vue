@@ -10,16 +10,10 @@
       <div class="col-lg-6">
         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
           <li class="nav-item">
-            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+            <a href="https://www.linkedin.com/in/chelsie-ng/" class="nav-link" target="_blank">Chelsie Ng</a>
           </li>
           <li class="nav-item">
-            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/blog" class="nav-link" target="_blank">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
+            <a href="https://www.linkedin.com/in/niyonx/" class="nav-link" target="_blank">Nigel Yong</a>
           </li>
         </ul>
       </div>

@@ -33,7 +33,7 @@
                 <!-- Navbar items -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <router-link class="nav-link nav-link-icon" to="/">
+                        <router-link class="nav-link nav-link-icon" to="/dashboard">
                             <i class="ni ni-planet"></i>
                             <span class="nav-link-inner--text">Dashboard</span>
                         </router-link>
@@ -45,17 +45,17 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link nav-link-icon" to="/login#target">
+                        <router-link class="nav-link nav-link-icon" to="/login">
                             <i class="ni ni-key-25"></i>
                             <span class="nav-link-inner--text">Login</span>
                         </router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link nav-link-icon" to="/profile">
-                            <i class="ni ni-single-02"></i>
-                            <span class="nav-link-inner--text">Profile</span>
-                        </router-link>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <router-link class="nav-link nav-link-icon" to="/profile">-->
+<!--                            <i class="ni ni-single-02"></i>-->
+<!--                            <span class="nav-link-inner&#45;&#45;text">Profile</span>-->
+<!--                        </router-link>-->
+<!--                    </li>-->
                 </ul>
             </template>
         </base-nav>
@@ -91,9 +91,9 @@
         </div>
         <!-- Page content -->
        <div class="container mt&#45;&#45;8 pb-5 pt-5">
-           <slide-x-right-transition mode="out-in" origin="center top">
-                    <router-view></router-view>
-                </slide-x-right-transition>
+           <slide-y-up-transition mode="out-in" origin="bottom">
+                <router-view></router-view>
+            </slide-y-up-transition>
        </div>
         <footer class="section-secondary py-5">
             <div class="container">
@@ -107,18 +107,10 @@
                     <div class="col-xl-6">
                         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                                <a href="https://www.linkedin.com/in/chelsie-ng-6724b5184/" class="nav-link" target="_blank">Chelsie Ng</a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About
-                                    Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link" target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
-                                   class="nav-link" target="_blank">MIT License</a>
+                                <a href="https://www.linkedin.com/in/niyonx/" class="nav-link" target="_blank">Nigel Yong</a>
                             </li>
                         </ul>
                     </div>
@@ -128,12 +120,12 @@
     </div>
 </template>
 <script>
-import { SlideXRightTransition } from 'vue2-transitions'
+import { SlideYUpTransition } from 'vue2-transitions'
 
 export default {
   name: 'auth-layout',
   components: {
-    SlideXRightTransition
+    SlideYUpTransition
   },
   data () {
     return {
