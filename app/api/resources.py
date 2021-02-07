@@ -106,3 +106,17 @@ class CreateProduct(SecureResource):
 
     def get(self, product_name, product_brand, expiry_date, user_id):
         return create_product(product_name, product_brand, expiry_date, user_id)
+
+@api_rest.route('/deleteProduct/<string:product_id>')
+class DeleteProduct(SecureResource):
+    """ Unsecure Resource Class: Inherit from Resource """
+
+    def get(self, product_id):
+        return delete_product(product_id)
+
+@api_rest.route('/totalProducts/')
+class DeleteProduct(SecureResource):
+    """ Unsecure Resource Class: Inherit from Resource """
+
+    def get(self):
+        return total_products()

@@ -46,7 +46,7 @@
           </td>
 
           <td class="text-right">
-               <base-button  type="secondary" icon="fa fa-trash"></base-button>
+               <base-button  @click="deleteProduct(row.product_id)" type="secondary" icon="fa fa-trash"></base-button>
           </td>
 
         </template>
@@ -72,6 +72,15 @@ export default {
     }
   },
   methods: {
+    deleteProduct (product_id) {
+      $backend.deleteProduct(product_id)
+        .then(responseData => {
+          console.log('success!')
+          this.$router.push('dashboard')
+        }).catch(error => {
+          this.error = error.message
+        })
+    },
     getProducts () {
       $backend.getProducts()
         .then(responseData => {

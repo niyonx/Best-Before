@@ -183,6 +183,21 @@ def create_product(product_name, product_brand, expiry_date, user_id):
 
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
+    
+    return True
+
+def delete_product(pid):
+    def method(sess):
+        sess.query(Products).filter(Products.product_id == pid).delete()
+
+        return True
+
+    run_transaction(sessionmaker(bind=engine),
+                lambda s: method(s))
+    
+    return True
+
+# delete_product('dsafdsa','fadsffdsaa','02-02-2021',11)
 
 def create_user(username, password, phone):
 
@@ -206,6 +221,12 @@ def create_user(username, password, phone):
                 lambda s: method(s))
     
     return True
+
+def total_products():
+    def method(sess):
+        return sess.query(Products).count()
+
+    return run_transaction(sessionmaker(bind=engine),lambda s: method(s))
 
 def check_user(username, password):
 
