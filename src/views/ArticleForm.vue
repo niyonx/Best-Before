@@ -41,7 +41,7 @@
                                                         label="Article name"
                                                         placeholder="Article name"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.name"
+                                                        :value="nameLoaded"
                                             />
                                         </div>
                                         <div class="col-lg-6">
@@ -49,7 +49,7 @@
                                                         label="Article Brand"
                                                         placeholder="Article Brand"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.brand"
+                                                        :value="brandLoaded"
                                             />
                                         </div>
                                     </div>
@@ -61,7 +61,6 @@
                                                         label="Expiry Date"
                                                         placeholder="MM-DD-YYYY"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.expiryDate"
                                             />
                                         </div>
                                         <div class="col-lg-3">
@@ -102,18 +101,19 @@ export default {
   name: 'user-profile',
   data () {
     return {
-      model: {
-        name: '',
-        brand: '',
-        expiryDate: ''
-      },
       defaultButtonText: 'Upload',
       defaultIcon: 'fa fa-upload',
       uploadedIcon: 'ni ni-image',
       selectedExpiryFile: null,
       selectedBarcodeFile: null,
       isExpirySelecting: false,
-      isBarcodeSelecting: false
+      isBarcodeSelecting: false,
+      articleName: '',
+      articleBrand: '',
+      expiryDate: '',
+      error: '',
+      barcodeLoading: false,
+      expiryLoading: false
     }
   },
   computed: {
@@ -128,6 +128,12 @@ export default {
     },
     barcodeIcon () {
       return this.selectedBarcodeFile ? this.uploadedIcon : this.defaultIcon
+    },
+    nameLoaded () {
+      return this.barcodeLoading ? this.articleName : ''
+    },
+    brandLoaded () {
+      return this.barcodeLoading ? this.articleBrand : ''
     }
   },
   methods: {
@@ -149,34 +155,51 @@ export default {
     },
     async onExpiryFileChanged (e) {
       this.selectedExpiryFile = e.target.files[0]
-      // Calling expiry api
-    },
-    async onBarcodeFileChanged (e) {
-      this.selectedBarcodeFile = e.target.files[0]
       let formData = new FormData()
-      formData.append('file', this.selectedBarcodeFile)
-      // Calling barcode api
+      formData.append('file', this.selectedExpiryFile)
+      // Calling expiry api
       await axios
-        .post('api/uploadBarcode', formData, {
+        .post('api/uploadExpiry', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
         .then((response) => {
-          console.log(response)
-          // const data = response.data
-          // this.mainPicture = data.main_img_name
-          // this.segments = data.segments
-          // this.notSearched = false
+          this.expiryLoading = true
+          const data = response.data
+          console.log(data)
         })
         .catch(function (error) {
           if (error.response) {
             this.error = error.response.data
           } else { this.error = 'uh oh, an error happened...' }
-          this.loading = false
-          this.snackbar = true
+          this.barcodeLoading = false
         })
     }
+  },
+  async onBarcodeFileChanged (e) {
+    this.selectedBarcodeFile = e.target.files[0]
+    let formData = new FormData()
+    formData.append('file', this.selectedBarcodeFile)
+    // Calling barcode api
+    await axios
+      .post('api/uploadBarcode', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((response) => {
+        this.barcodeLoading = true
+        const data = response.data
+        this.articleName = data.product_name
+        this.articleBrand = data.brand
+      })
+      .catch(function (error) {
+        if (error.response) {
+          this.error = error.response.data
+        } else { this.error = 'uh oh, an error happened...' }
+        this.barcodeLoading = false
+      })
   }
 }
 </script>

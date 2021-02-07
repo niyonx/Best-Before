@@ -6,10 +6,11 @@ http://flask-restplus.readthedocs.io
 from datetime import datetime
 from flask import request
 from flask_restx import Resource
+from PIL import Image
 
 from .security import require_auth
 from . import api_rest
-
+from .database import *
 from .barcode import *
 from .expiry import *
 from .database import *

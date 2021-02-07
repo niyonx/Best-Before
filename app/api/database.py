@@ -43,7 +43,7 @@ engine = create_engine(
     # For cockroach demo:
     # 'cockroachdb://<username>:<password>@<hostname>:<port>/bank?sslmode=require',
     # For CockroachCloud:
-    'cockroachdb://nigel:bZpGIcHVE-yJ3em_@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=/home/niyon/Workspace/ExpireNoMore/certs/cc-ca.crt&options=--cluster=frozen-rhino-524',
+    'cockroachdb://nigel:bZpGIcHVE-yJ3em_@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=/Users/chelsieng/Documents/Workspace/ExpireNoMore/certs/cc-ca.crt&options=--cluster=frozen-rhino-524',
     # 'cockroachdb://<username>:<password>@<globalhost>:26257/<cluster_name>.bank?sslmode=verify-full&sslrootcert=<certs_dir>/<ca.crt>',
     echo=True                   # Log SQL queries to stdout
 )
@@ -60,10 +60,10 @@ seen_account_ids = set()
 # The code below generates random IDs for new accounts.
 
 def create_init_users():
-  
+
     def method(sess):
         new_users = []
-        
+
         new_users.append(
             UserAccounts(
                 user_id = 11,
@@ -81,9 +81,9 @@ def create_init_users():
                 phone = '5145690119'
             )
         )
-        
+
         sess.add_all(new_users)
-    
+
     return run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
@@ -139,14 +139,14 @@ def create_init_products():
                 expiry_date='01-24-2021'
             )
         )
-        
+
         sess.add_all(new_products)
-    
+
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
 def get_products():
-  
+
     def method(sess):
         result = []
         for instance in sess.query(Products).all():
@@ -157,9 +157,9 @@ def get_products():
                 'expiry_date':instance.expiry_date
             }
           )
-        
+
         return result
-    
+
     return run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
@@ -178,17 +178,17 @@ def create_product(product_name, product_brand, expiry_date, user_id):
                 expiry_date=expiry_date
             )
         )
-        
+
         sess.add_all(new_products)
-    
+
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
 def create_user(username, password, phone):
-  
+
     def method(sess):
         new_user = []
-        
+
         billion = 1000000000
         new_id = floor(random.random()*billion)
         new_user.append(
@@ -199,9 +199,9 @@ def create_user(username, password, phone):
                 phone = phone
             )
         )
-        
+
         sess.add_all(new_user)
-    
+
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
@@ -213,13 +213,12 @@ def check_user(username, password):
         if(user and user.password == password):
             return True
         return False
-    
+
   return run_transaction(sessionmaker(bind=engine),lambda s: method(s))
 
 # print(get_products())
 
 # create_init_products()
-
 # create_init_users()
 
 print(check_user('niyonx', 'password'))
