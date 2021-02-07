@@ -20,6 +20,7 @@ cockroachdb = "*"
 werkzeug = "*"
 opencv-python = "*"
 psycopg2-binary = "*"
+pil = "*"
 pillow = "*"
 
 [dev-packages]

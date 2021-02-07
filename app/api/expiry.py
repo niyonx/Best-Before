@@ -24,12 +24,7 @@ def detect_text(img):
     # with io.open(img, 'rb') as image_file:
     #     img = image_file.read()
 
-    # img = Image.fromarray(img, 'RGB')
-    # img_byte_arr = io.BytesIO()
-    img.save(img, format='PNG')
-    img_byte_arr = img.getvalue()
-
-    image = vision.Image(content=img_byte_arr)
+    image = vision.Image(content=img)
 
     response = client.text_detection(image=image)
     text = response.text_annotations[0].description

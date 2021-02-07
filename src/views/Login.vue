@@ -69,13 +69,13 @@ export default {
     }
   },
   methods: {
-      checkUser (username, password) {
+    checkUser (username, password) {
       $backend.checkUser(username, password)
         .then(responseData => {
-          if(responseData == true){
-              this.$router.push('dashboard')
-          }else{
-              this.error = 'Aye, invalid username and password combo!'
+          if (responseData == true) {
+            this.$router.push('dashboard')
+          } else {
+            this.error = 'Aye, invalid username and password combo!'
           }
         }).catch(error => {
           this.error = error.message

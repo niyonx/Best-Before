@@ -73,9 +73,8 @@ class UploadExpiry(Resource):
             return 'No selected file', 400
 
         root_dir = os.getcwd()
-        img = Image.open(file)
 
-        expiry_date = find_expiry_date(img)
+        expiry_date = find_expiry_date(file.read())
 
         return expiry_date
 
