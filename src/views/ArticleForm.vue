@@ -33,21 +33,21 @@
                         </div>
                         <template>
                             <form @submit.prevent>
-                                <h6 class="heading-small text-muted mb-4">Product information</h6>
+                                <h6 class="heading-small text-muted mb-4">Article information</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="Product name"
-                                                        placeholder="Product name"
+                                                        label="Article name"
+                                                        placeholder="Article name"
                                                         input-classes="form-control-alternative"
                                                         v-model="model.name"
                                             />
                                         </div>
                                         <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="Product Brand"
-                                                        placeholder="Product Brand"
+                                                        label="Article Brand"
+                                                        placeholder="Article Brand"
                                                         input-classes="form-control-alternative"
                                                         v-model="model.brand"
                                             />
