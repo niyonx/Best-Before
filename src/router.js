@@ -39,9 +39,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue')
         },
         {
-          path: '/profile',
-          name: 'profile',
-          component: () => import(/* webpackChunkName: "demo" */ './views/UserProfile.vue')
+          path: '/product',
+          name: 'add product',
+          component: () => import(/* webpackChunkName: "demo" */ './views/ProductForm.vue')
         },
         {
           path: '/maps',
