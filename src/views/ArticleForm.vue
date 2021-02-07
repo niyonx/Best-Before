@@ -27,7 +27,7 @@
                                     <h3 class="mb-0">My article</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <base-button type="primary" size="sm" icon="ni ni-fat-add">Add</base-button>
+                                    <base-button type="primary" size="sm" icon="fa fa-plus">Add</base-button>
                                 </div>
                             </div>
                         </div>
