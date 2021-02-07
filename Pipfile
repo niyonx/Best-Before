@@ -18,7 +18,7 @@ dateparser = "*"
 flask-sqlalchemy = "*"
 cockroachdb = "*"
 werkzeug = "*"
-opencv-python = "*"
+opencv-python = "4.2.0.34"
 psycopg2-binary = "*"
 Pillow = "==2.2.1"
 
