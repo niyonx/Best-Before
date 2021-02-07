@@ -47,7 +47,7 @@
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header bg-transparent">
-<!--                            <h3 class="mb-0">My Articles</h3>-->
+                            <ProjectsTable></ProjectsTable>
 <!--                        </div>-->
 <!--                        <div class="card-body">-->
 <!--                            <div class="row icon-examples">-->
