@@ -49,9 +49,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Maps.vue')
         },
         {
-          path: '/lists',
+          path: '/my_articles',
           name: '',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
+          component: () => import(/* webpackChunkName: "demo" */ './views/MyArticles.vue')
         }
       ]
     },
