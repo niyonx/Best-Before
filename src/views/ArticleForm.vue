@@ -66,25 +66,25 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <p class="form-control-label">Date</p>
-                                            <base-button :loading="isSelecting" @click="onButtonClick" type="primary"
-                                                         size="sm" :icon="icon">Upload
+                                            <base-button :loading="isExpirySelecting" @click="onExpiryButtonClick" type="primary"
+                                                         size="sm" :icon="expiryIcon">{{expiryButtonText}}
                                             </base-button>
-                                            <input ref="uploader"
+                                            <input ref="expiry"
                                                    class="d-none"
                                                    type="file"
                                                    accept="image/*"
-                                                   @change="onFileChanged">
+                                                   @change="onExpiryFileChanged">
                                         </div>
                                         <div class="col-lg-3">
                                             <p class="form-control-label">Barcode</p>
-                                            <base-button :loading="isSelecting" @click="onButtonClick" type="primary"
-                                                         size="sm" :icon="icon"> {{buttonText}}
+                                            <base-button :loading="isBarcodeSelecting" @click="onBarcodeButtonClick" type="primary"
+                                                         size="sm" :icon="barcodeIcon"> {{barcodeButtonText}}
                                             </base-button>
-                                            <input ref="uploader"
+                                            <input ref="barcode"
                                                    class="d-none"
                                                    type="file"
                                                    accept="image/*"
-                                                   @change="onFileChanged">
+                                                   @change="onBarcodeFileChanged">
                                         </div>
                                     </div>
                                 </div>
@@ -109,29 +109,49 @@ export default {
       defaultButtonText: 'Upload',
       defaultIcon: 'ni ni-cloud-upload-96',
       uploadedIcon: 'ni ni-image',
-      selectedFile: null,
-      isSelecting: false
+      selectedExpiryFile: null,
+      selectedBarcodeFile: null,
+      isExpirySelecting: false,
+      isBarcodeSelecting: false
     }
   },
   computed: {
-    buttonText () {
-      return this.selectedFile ? this.selectedFile.name : this.defaultButtonText
+    expiryButtonText () {
+      return this.selectedExpiryFile ? this.selectedExpiryFile.name : this.defaultButtonText
     },
-    icon () {
-      return this.selectedFile ? this.uploadedIcon : this.defaultIcon
+    barcodeButtonText () {
+      return this.selectedBarcodeFile ? this.selectedBarcodeFile.name : this.defaultButtonText
+    },
+    expiryIcon () {
+      return this.selectedExpiryFile ? this.uploadedIcon : this.defaultIcon
+    },
+    barcodeIcon () {
+      return this.selectedBarcodeFile ? this.uploadedIcon : this.defaultIcon
     }
   },
   methods: {
-    onButtonClick () {
-      this.isSelecting = true
+    onExpiryButtonClick () {
+      this.isExpirySelecting = true
       window.addEventListener('focus', () => {
-        this.isSelecting = false
+        this.isExpirySelecting = false
       }, { once: true })
 
-      this.$refs.uploader.click()
+      this.$refs.expiry.click()
     },
-    async onFileChanged (e) {
-      this.selectedFile = e.target.files[0]
+    onBarcodeButtonClick () {
+      this.isBarcodeSelecting = true
+      window.addEventListener('focus', () => {
+        this.isBarcodeSelecting = false
+      }, { once: true })
+
+      this.$refs.barcode.click()
+    },
+    async onExpiryFileChanged (e) {
+      this.selectedExpiryFile = e.target.files[0]
+      // Calling expiry api
+    },
+    async onBarcodeFileChanged (e) {
+      this.selectedBarcodeFile = e.target.files[0]
       // Calling barcode api
     }
   }
