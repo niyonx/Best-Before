@@ -97,6 +97,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   name: 'user-profile',
   data () {
@@ -152,7 +153,29 @@ export default {
     },
     async onBarcodeFileChanged (e) {
       this.selectedBarcodeFile = e.target.files[0]
+      let formData = new FormData()
+      formData.append('file', this.selectedBarcodeFile)
       // Calling barcode api
+      await axios
+        .post('api/uploadBarcode', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((response) => {
+          console.log(response)
+          // const data = response.data
+          // this.mainPicture = data.main_img_name
+          // this.segments = data.segments
+          // this.notSearched = false
+        })
+        .catch(function (error) {
+          if (error.response) {
+            this.error = error.response.data
+          } else { this.error = 'uh oh, an error happened...' }
+          this.loading = false
+          this.snackbar = true
+        })
     }
   }
 }

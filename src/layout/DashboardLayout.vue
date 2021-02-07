@@ -2,8 +2,8 @@
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <side-bar
       :background-color="sidebarBackground"
-      short-title="Argon"
-      title="Argon"
+      short-title="Best Before"
+      title="Best Before"
     >
       <template slot="links">
         <sidebar-item
@@ -17,7 +17,7 @@
         <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
         <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/>
         <sidebar-item :link="{name: 'New Article', icon: 'ni ni-fat-add text-yellow', path: '/new_article'}"/>
-        <sidebar-item :link="{name: 'My Articles', icon: 'ni ni-bullet-list-67 text-red', path: '/lists'}"/>
+        <sidebar-item :link="{name: 'My Articles', icon: 'ni ni-bullet-list-67 text-red', path: '/my_articles'}"/>
         <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/>
 
