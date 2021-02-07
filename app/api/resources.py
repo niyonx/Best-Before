@@ -12,7 +12,6 @@ from . import api_rest
 
 from .barcode import *
 from .expiry import *
-from .database import *
 import os
 
 class SecureResource(Resource):
@@ -54,7 +53,7 @@ class UploadBarcode(Resource):
 
         root_dir = os.getcwd()
         img = Image.open(file)
-        
+
         barcode_id = read_image_barcode(img)
 
         product_info = get_product_info(barcode_id)
@@ -73,7 +72,7 @@ class UploadExpiry(Resource):
 
         root_dir = os.getcwd()
         img = Image.open(file)
-        
+
         expiry_date = find_expiry_date(img)
 
         return expiry_date

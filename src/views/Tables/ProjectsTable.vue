@@ -89,8 +89,15 @@ export default {
         })
     }
   },
+  callFunction: function () {
+    var currentDate = new Date()
+    alert(currentDate)
+    var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+    console.log(currentDateWithFormat)
+  },
   beforeMount () {
     this.getProducts()
+    this.callFunction()
   }
 }
 </script>
