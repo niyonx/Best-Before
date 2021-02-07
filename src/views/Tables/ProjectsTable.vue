@@ -76,7 +76,6 @@ export default {
     return {
       tableData: [
         {
-          img: 'img/theme/bootstrap.jpg',
           name: 'Argon Design System',
           brand: '$2500 USD',
           status: 'warning',
@@ -84,7 +83,6 @@ export default {
           expiry: '01-01-2002'
         },
         {
-          img: 'img/theme/angular.jpg',
           name: 'Angular Now UI Kit PRO',
           brand: '$1800 USD',
           status: 'safe',
@@ -92,7 +90,6 @@ export default {
           expiry: '10-12-2020'
         },
         {
-          img: 'img/theme/sketch.jpg',
           name: 'Black Dashboard',
           brand: '$3150 USD',
           status: 'expired',
@@ -100,7 +97,6 @@ export default {
           expiry: '12-12-1999'
         },
         {
-          img: 'img/theme/react.jpg',
           name: 'React Material Dashboard',
           brand: '$4400 USD',
           status: 'safe',
@@ -108,7 +104,6 @@ export default {
           expiry: '09-13-2020'
         },
         {
-          img: 'img/theme/vue.jpg',
           name: 'Vue Paper UI Kit PRO',
           brand: '$2200 USD',
           status: 'safe',
