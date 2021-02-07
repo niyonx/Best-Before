@@ -75,18 +75,18 @@
     </div>
 </template>
 <script>
-  export default {
-    name: 'register',
-    data() {
-      return {
-        model: {
-          name: '',
-          email: '',
-          password: ''
-        }
+export default {
+  name: 'register',
+  data () {
+    return {
+      model: {
+        name: '',
+        email: '',
+        password: ''
       }
     }
   }
+}
 </script>
 <style>
 </style>

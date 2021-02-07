@@ -54,17 +54,17 @@
         </div>
 </template>
 <script>
-  export default {
-    name: 'login',
-    data() {
-      return {
-        model: {
-          email: '',
-          password: ''
-        }
+export default {
+  name: 'login',
+  data () {
+    return {
+      model: {
+        email: '',
+        password: ''
       }
     }
   }
+}
 </script>
 <style>
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+// import Home from './views/Home.vue'
 import Api from './views/Api.vue'
 import DashboardLayout from '@/layout/DashboardLayout'
 import AuthLayout from '@/layout/AuthLayout'
@@ -13,7 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: AuthLayout
     },
     {
       path: '/api',
@@ -39,9 +39,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue')
         },
         {
-          path: '/profile',
-          name: 'profile',
-          component: () => import(/* webpackChunkName: "demo" */ './views/UserProfile.vue')
+          path: '/product',
+          name: 'add product',
+          component: () => import(/* webpackChunkName: "demo" */ './views/ProductForm.vue')
         },
         {
           path: '/maps',

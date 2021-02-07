@@ -12,6 +12,6 @@ export default {
   components: {
     FadeTransition
   }
-};
+}
 </script>
 <style></style>
