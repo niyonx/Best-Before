@@ -27,7 +27,7 @@
                                     <h3 class="mb-0">Add an article</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <base-button type="primary" size="sm" @click="createProduct(nameLoaded, brandLoaded, expiryLoaded, '11')" icon="fa fa-plus">Add</base-button>
+                                    <base-button type="primary" size="sm" @click="createProduct(articleName, articleBrand, expiryDate, '11')" icon="fa fa-plus">Add</base-button>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                 <div class="pl-lg-4">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <base-input alternative=""
+                                            <base-input v-model="articleName" alternative=""
                                                         label="Article name"
                                                         placeholder="Article name"
                                                         input-classes="form-control-alternative"
@@ -45,7 +45,7 @@
                                             />
                                         </div>
                                         <div class="col-lg-6">
-                                            <base-input alternative=""
+                                            <base-input v-model="articleBrand" alternative=""
                                                         label="Article Brand"
                                                         placeholder="Article Brand"
                                                         input-classes="form-control-alternative"
@@ -57,7 +57,7 @@
                                 <div class="pl-lg-4">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <base-input alternative=""
+                                            <base-input v-model="expiryDate" alternative=""
                                                         label="Expiry Date"
                                                         placeholder="MM-DD-YYYY"
                                                         input-classes="form-control-alternative"
@@ -147,6 +147,7 @@ export default {
         .then(responseData => {
           if (responseData == true) {
             this.$router.push('dashboard')
+            console.log('here')
           } else {
             this.error = 'OOPS!'
           }

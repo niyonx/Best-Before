@@ -51,6 +51,16 @@ export default {
   createProduct (product_name = '', product_brand = '', expiry_date = '', user_id = '') {
     return $axios.get('createProduct/' + product_name + '/' + product_brand + '/' + expiry_date + '/' + user_id)
       .then(response => response.data)
+  },
+
+  deleteProduct (product_id = '') {
+    return $axios.get('deleteProduct/' + product_id)
+      .then(response => response.data)
+  },
+
+  totalProducts () {
+    return $axios.get('totalProducts/')
+      .then(response => response.data)
   }
 
 }

@@ -7,7 +7,8 @@
                 <span class="navbar-toggler-icon"></span>
             </navbar-toggle-button>
             <router-link class="navbar-brand" to="/">
-                <img :src="logo" class="navbar-brand-img" alt="...">
+                <!-- <img :src="logo" class="navbar-brand-img" alt="..."> -->
+<p class="pt-3" icon='fa fa-barcode' style="font-size:25px; font-family: verdana">Best Before 📅</p>
             </router-link>
 
             <slot name="mobile-right">
