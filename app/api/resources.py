@@ -99,3 +99,10 @@ class CreateUser(SecureResource):
 
     def get(self, username, password, phone):
         return create_user(username, password, phone)
+
+@api_rest.route('/createProduct/<string:product_name>/<string:product_brand>/<string:expiry_date>/<string:user_id>')
+class CreateProduct(SecureResource):
+    """ Unsecure Resource Class: Inherit from Resource """
+
+    def get(self, product_name, product_brand, expiry_date, user_id):
+        return create_product(product_name, product_brand, expiry_date, user_id)

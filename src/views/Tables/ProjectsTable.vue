@@ -53,7 +53,6 @@
       </base-table>
     </div>
 
-
   </div>
 </template>
 <script>
@@ -86,29 +85,19 @@ export default {
       var expiryDate = new Date(expiryDate)
       console.log(currentDate)
       // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
-      var difference = Math.floor((expiryDate - currentDate) / (1000*60*60*24))
+      var difference = Math.floor((expiryDate - currentDate) / (1000 * 60 * 60 * 24))
 
-      if(difference <= 0 )
-        return 'Expired'
-      else if(difference <= 7)
-        return 'Warning'
-      else
-        return 'Safe'
-    } ,
+      if (difference <= 0) { return 'Expired' } else if (difference <= 7) { return 'Warning' } else { return 'Safe' }
+    },
     getExpiryStatusType (expiryDate) {
       var currentDate = new Date()
       var expiryDate = new Date(expiryDate)
       console.log(currentDate)
       // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
-      var difference = Math.floor((expiryDate - currentDate) / (1000*60*60*24))
+      var difference = Math.floor((expiryDate - currentDate) / (1000 * 60 * 60 * 24))
 
-      if(difference <= 0 )
-        return 'danger'
-      else if(difference <= 7)
-        return 'warning'
-      else
-        return 'success'
-    } 
+      if (difference <= 0) { return 'danger' } else if (difference <= 7) { return 'warning' } else { return 'success' }
+    }
   },
   beforeMount () {
     this.getProducts()

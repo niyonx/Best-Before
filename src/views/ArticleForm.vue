@@ -27,7 +27,7 @@
                                     <h3 class="mb-0">My article</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <base-button type="primary" size="sm" icon="fa fa-plus">Add</base-button>
+                                    <base-button type="primary" size="sm" @click="createProduct(nameLoaded, brandLoaded, expiryLoaded, '11')" icon="fa fa-plus">Add</base-button>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +98,7 @@
 </template>
 <script>
 import axios from 'axios'
+import $backend from '../backend'
 export default {
   name: 'user-profile',
   data () {
@@ -141,6 +142,18 @@ export default {
     }
   },
   methods: {
+    createProduct (product_name, product_brand, expiry_date, user_id) {
+      $backend.createProduct(product_name, product_brand, expiry_date, user_id)
+        .then(responseData => {
+          if (responseData == true) {
+            this.$router.push('dashboard')
+          } else {
+            this.error = 'OOPS!'
+          }
+        }).catch(error => {
+          this.error = error.message
+        })
+    },
     onExpiryButtonClick () {
       this.isExpirySelecting = true
       window.addEventListener('focus', () => {

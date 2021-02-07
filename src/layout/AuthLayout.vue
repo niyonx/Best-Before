@@ -43,7 +43,7 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link nav-link-icon" to="/login">
+                        <router-link class="nav-link nav-link-icon" to="/login#target">
                             <i class="ni ni-key-25"></i>
                             <span class="nav-link-inner--text">Login</span>
                         </router-link>
@@ -58,20 +58,20 @@
             </template>
         </base-nav>
         <!-- Header -->
-        <div class="header bg-gradient-success py-8 py-lg-7">
+        <div class="header bg-gradient-success py-6 py-lg-6">
             <div class="container">
                 <div class="header-body text-center mb-6">
                     <div class="row justify-content-center">
-                        <div class="col-lg-6 col-md-6">
-                            <h1 class="text-white">Welcome to Best Before!</h1>
+                        <div class="col-lg-6 col-md-6 pb-5 pt-5">
+                            <h1 style='font-size:40px;' class="text-white">Welcome to Best Before!</h1>
                         </div>
                         <img src="@/assets/foodwaste.png" size="150%">
-                         <div class="col-lg-6 col-md-6">
-                        <p class="text-lead text-white">Say no more to food waste.</p>
+                         <div class="col-lg-6 col-md-6 pt-5">
+                        <p style='font-size:30px;' class="text-lead text-white">Say no more to food waste.</p>
                               </div>
                     </div>
-                     <div class="row justify-content-center">
-                            <base-button>Get Started</base-button>
+                     <div class="row justify-content-center pt-5">
+                            <base-button @click="this.$router.push('login')">Get Started</base-button>
                         </div>
                 </div>
                 <div class="header-body text-center mb-6">
