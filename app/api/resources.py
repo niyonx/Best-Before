@@ -11,6 +11,7 @@ from .security import require_auth
 from . import api_rest
 
 from .barcode import *
+from .expiry import *
 import os
 
 
@@ -59,4 +60,22 @@ class UploadBarcode(Resource):
         product_info = get_product_info(barcode_id)
 
         return product_info
+
+@api_rest.route('/uploadExpiry')
+class UploadExpiry(Resource):
+    def post(self):
+        if 'file' not in request.files:
+            return 'Please upload file', 400
+
+        file = request.files['file']
+        if file.filename == '':
+            return 'No selected file', 400
+
+        root_dir = os.getcwd()
+        img = Image.open(file)
+        
+        expiry_date = find_expiry_date(img)
+
+        return expiry_date
+
 

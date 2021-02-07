@@ -1,53 +1,75 @@
 from google.cloud import vision
 import os
+
 # import dateparser
-# import datefinder
-# from dateutil.parser import parse
+# from dateparser.search import search_dates
 
-from dateparser.search import search_dates
-
+import datefinder
 
 # set path to api key here
 """ INPUT PATH TO JSON API KEY"""
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="credentials.json"
 
-def detect_text(path):
+def detect_text(img):
     """Detects text in the file."""
-    
-    # path = 
-
+  
     from google.cloud import vision
     import io
     client = vision.ImageAnnotatorClient()
 
-    with io.open(path, 'rb') as image_file:
-        content = image_file.read()
+    # Uncomment below if path given instead of image
 
-    image = vision.Image(content=content)
+    with io.open(img, 'rb') as image_file:
+        img = image_file.read()
+
+    image = vision.Image(content=img)
 
     response = client.text_detection(image=image)
-    texts = response.text_annotations
-    # print('Texts:')
-
-    out = texts[0].description
-
-    # for text in texts:
-    #     print('\n"{}"'.format(text.description))
-
-    #     vertices = (['({},{})'.format(vertex.x, vertex.y)
-    #                 for vertex in text.bounding_poly.vertices])
-
-    #     print('bounds: {}'.format(','.join(vertices)))
+    text = response.text_annotations[0].description
 
     if response.error.message:
         raise Exception(
             '{}\nFor more info on error messages, check: '
             'https://cloud.google.com/apis/design/errors'.format(
                 response.error.message))
-    
-    return out
 
-# print(detect_text("/home/niyon/Workspace/ExpireNoMore/app/images/expiry/IMG_20210205_225640.jpg"))
+    return text
+
+def replace_MM_to_Full(text):
+    months_expiry = {
+      "JA" : "January",
+      "FE" : "February",
+      "MR": "March",
+      "AL": "April",
+      "MA": "May",
+      "JN": "June",
+      "JL": "July",
+      "AU": "August",
+      "SE": "September",
+      "OC": "October",
+      "NO": "November",
+      "DE": "December"
+    }
+
+    for word, initial in months_expiry.items():
+        text = text.replace(word, initial)
+      
+    return text
+
+def find_expiry_date(img):
+
+    text = detect_text(img)
+
+    text = replace_MM_to_Full(text)
+
+    try:
+        expiry_date = next(datefinder.find_dates(text)).strftime("%m-%d-%Y")
+    except:
+        return False
+
+    return expiry_date
+
+# print(find_expiry_date("/home/niyon/Workspace/ExpireNoMore/app/images/expiry/IMG_20210205_225640.jpg"))
 # print(detect_text("/home/niyon/Workspace/ExpireNoMore/app/images/expiry/IMG_20210205_225652.jpg"))
 # print(detect_text("/home/niyon/Workspace/ExpireNoMore/app/images/expiry/IMG_20210205_225703.jpg"))
 # print(detect_text("/home/niyon/Workspace/ExpireNoMore/app/images/expiry/IMG_20210205_225750.jpg"))
@@ -58,38 +80,77 @@ def detect_text(path):
 
 # REGEX = (?:\d{2}(?:\d{2})?(?: *)[\/:\-,_.]?(?: *))?\d{2}(?: *)[\/:\-,_.]?(?: *)\d{2}(?:\d{2})?
 
-string_with_dates = '''
-    2021 MR04
-BZ21008 Y
+# string_with_dates = '''
+#     2021 MR04
+# BZ21008 Y
 
-0044598AA
-B.B./M.A.2021 MA 13
+# 0044598AA
+# B.B./M.A.2021 MA 13
 
-BEST BEFORE HEILLEUR AVANT
-2021 MA 28
+# BEST BEFORE HEILLEUR AVANT
+# 2021 MA 28
 
-2021JL31
-K4 20:06
-BEST BEFORE/MEILLEUR AVANT
+# 2021JL31
+# K4 20:06
+# BEST BEFORE/MEILLEUR AVANT
 
-TOSRLSA3120235
-REST BEFORE
-2021 00 31
-NEILLEUR AVANT
+# TOSRLSA3120235
+# REST BEFORE
+# 2021 00 31
+# NEILLEUR AVANT
 
-BB/MA 2021 OC 18 B
+# BB/MA 2021 OC 18 B
 
-2021 AL14
-16:10 M17
+# 2021 AL14
+# 16:10 M17
 
-606) 05 MR
-'''
+# 606) 05 MR
+# '''
+
+# string_with_dates = '''
+#     2021 MR04
+# BZ21008 Y
+
+# 0044598AA
+# B.B./M.A.2021 MA 13
+
+# BEST BEFORE HEILLEUR AVANT
+# 2021 MA 28
+# '''
+
+# string_with_dates = '''
+#     2021 March04
+# BZ21008 Y
+# '''
+
+
+
+
+# months_expiry = {
+#   "JA" : "January",
+#   "FE" : "February",
+#   "MR": "March",
+#   "AL": "April",
+#   "MA": "May",
+#   "JN": "June",
+#   "JL": "July",
+#   "AU": "August",
+#   "SE": "September",
+#   "OC": "October",
+#   "NO": "November",
+#   "DE": "December"
+# }
+
+# address = "123 north anywhere street"
+
+# for word, initial in months_expiry.items():
+#     string_with_dates = string_with_dates.replace(word, initial)
+
+# print(string_with_dates)
 
 # matches = datefinder.find_dates(string_with_dates)
 # for match in matches:
-#     print(match)
+#     print(match.strftime("%m-%d-%Y"))
 
-# print(parse("2021 MA 28", fuzzy_with_tokens=True))
-
-# dates = search_dates('Central design committee session Tuesday 10/22 6:30 pm')
+# dates = search_dates(string_with_dates)
 # print(dates)
