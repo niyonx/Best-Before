@@ -5,7 +5,9 @@
                   containerClasses="px-4 container"
                   expand>
             <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="img/brand/white.png"/>
+                <!-- <img src="img/brand/white.png"/> -->
+                <!-- <i class='fa fa-barcode' style=""></i> -->
+                <p class="pt-3" icon='fa fa-barcode' style="font-size:25px; color: white; font-family: verdana">Best Before 📅</p>
             </router-link>
 
             <template v-slot="{closeMenu}">

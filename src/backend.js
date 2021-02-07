@@ -53,11 +53,10 @@ export default {
       .then(response => response.data)
   },
 
-  deleteProduct (product_id= '') {
-    return $axios.get('deleteProduct/' + product_id )
+  deleteProduct (product_id = '') {
+    return $axios.get('deleteProduct/' + product_id)
       .then(response => response.data)
-  }
-  ,
+  },
 
   totalProducts () {
     return $axios.get('totalProducts/')

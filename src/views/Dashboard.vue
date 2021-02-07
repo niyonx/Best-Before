@@ -119,28 +119,30 @@ import $backend from '../backend'
 import ProjectsTable from './Tables/ProjectsTable'
 
 export default {
-    components: {
-        MyArticles,
+  components: {
+    MyArticles,
     ProjectsTable
-    },
-    props: {
+  },
+  props: {
     type: {
       type: String
     },
     name: String,
-    total: 0,
+    total: 0
   },
-  data : {
+  data: function () {
+    return {
       total: 0,
-    totalExp: 'sss',
+      totalExp: 'sss',
 
       totalWarn: 0,
       totalSafe: 0
+    }
   },
   data () {
     return {
-      tableData: [],
-      
+      tableData: []
+
     }
   },
   methods: {
@@ -164,43 +166,47 @@ export default {
     getExpiryStatus (expiryDate) {
       var currentDate = new Date()
       var expiryDate = new Date(expiryDate)
-    //   console.log(currentDate)
+      //   console.log(currentDate)
       // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
       var difference = Math.floor((expiryDate - currentDate) / (1000 * 60 * 60 * 24))
 
-      if (difference <= 0) { 
+      if (difference <= 0) {
         //   this.totalExp = parseInt(this.totalExp) + parseInt(1)
-          return 'Expired'
-
-           } else if (difference <= 7) {
-            //    this.totalWarn = parseInt(this.totalWarn) + parseInt(1)
-                return 'Warning' } else { 
-                    // this.totalSafe = parseInt(this.totalSafe) + parseInt(1)
-                    return 'Safe' }
+        return 'Expired'
+      } else if (difference <= 7) {
+        //    this.totalWarn = parseInt(this.totalWarn) + parseInt(1)
+        return 'Warning'
+      } else {
+        // this.totalSafe = parseInt(this.totalSafe) + parseInt(1)
+        return 'Safe'
+      }
     },
     getExpiryStatusType (expiryDate) {
       var currentDate = new Date()
       var expiryDate = new Date(expiryDate)
-    //   console.log(currentDate)
+      //   console.log(currentDate)
       // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
       var difference = Math.floor((expiryDate - currentDate) / (1000 * 60 * 60 * 24))
 
-      if (difference <= 0) { 
+      if (difference <= 0) {
         //   this.totalExp = parseInt(this.totalExp) + parseInt(1)
-      return 'danger' } else if (difference <= 7) { 
+        return 'danger'
+      } else if (difference <= 7) {
         //   this.totalWarn = parseInt(this.totalWarn) + parseInt(1)
-          return 'warning' } else { 
-            //   this.totalSafe = parseInt(this.totalSafe) + parseInt(1)
-              return 'success' }
+        return 'warning'
+      } else {
+        //   this.totalSafe = parseInt(this.totalSafe) + parseInt(1)
+        return 'success'
+      }
     },
     totalProducts () {
-          $backend.totalProducts()
+      $backend.totalProducts()
         .then(responseData => {
           this.total = responseData
         }).catch(error => {
           this.error = error.message
         })
-      }
+    }
   },
   beforeMount () {
     this.getProducts()
