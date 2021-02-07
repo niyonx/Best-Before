@@ -6,11 +6,8 @@
       <div class="row align-items-center">
         <div class="col">
           <h3 class="mb-0" :class="type === 'dark' ? 'text-white': ''">
-            {{name}}
+            My Articles
           </h3>
-        </div>
-        <div class="col text-right">
-          <base-button type="primary" size="sm">See all</base-button>
         </div>
       </div>
     </div>
@@ -52,14 +49,9 @@
           </td>
 
         </template>
-
       </base-table>
     </div>
 
-    <div class="card-footer d-flex justify-content-end"
-         :class="type === 'dark' ? 'bg-transparent': ''">
-      <base-pagination total="30"></base-pagination>
-    </div>
 
   </div>
 </template>
