@@ -155,19 +155,24 @@ export default {
     },
     async onExpiryFileChanged (e) {
       this.selectedExpiryFile = e.target.files[0]
-      let formData = new FormData()
-      formData.append('file', this.selectedExpiryFile)
       // Calling expiry api
+    },
+    async onBarcodeFileChanged (e) {
+      this.selectedBarcodeFile = e.target.files[0]
+      let formData = new FormData()
+      formData.append('file', this.selectedBarcodeFile)
+      // Calling barcode api
       await axios
-        .post('api/uploadExpiry', formData, {
+        .post('api/uploadBarcode', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
         .then((response) => {
-          this.expiryLoading = true
+          this.barcodeLoading = true
           const data = response.data
-          console.log(data)
+          this.articleName = data.product_name
+          this.articleBrand = data.brand
         })
         .catch(function (error) {
           if (error.response) {
@@ -176,30 +181,6 @@ export default {
           this.barcodeLoading = false
         })
     }
-  },
-  async onBarcodeFileChanged (e) {
-    this.selectedBarcodeFile = e.target.files[0]
-    let formData = new FormData()
-    formData.append('file', this.selectedBarcodeFile)
-    // Calling barcode api
-    await axios
-      .post('api/uploadBarcode', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then((response) => {
-        this.barcodeLoading = true
-        const data = response.data
-        this.articleName = data.product_name
-        this.articleBrand = data.brand
-      })
-      .catch(function (error) {
-        if (error.response) {
-          this.error = error.response.data
-        } else { this.error = 'uh oh, an error happened...' }
-        this.barcodeLoading = false
-      })
   }
 }
 </script>
