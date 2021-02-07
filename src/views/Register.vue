@@ -64,7 +64,7 @@
                         <div class="text-center">
                             <base-button type="primary" class="my-4"
                                     @click="createUser(model.username, model.password, model.phone)"
-                            
+
                             >Create account</base-button>
                         </div>
                     </form>

@@ -13,9 +13,6 @@
             path: '/dashboard'
           }"
         />
-
-        <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
-        <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/>
         <sidebar-item :link="{name: 'New Article', icon: 'fa fa-plus text-yellow', path: '/new_article'}"/>
         <sidebar-item :link="{name: 'My Articles', icon: 'ni ni-bullet-list-67 text-red', path: '/my_articles'}"/>
         <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
