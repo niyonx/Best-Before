@@ -92,3 +92,10 @@ class CheckUser(SecureResource):
 
     def get(self, username, password):
         return check_user(username, password)
+
+@api_rest.route('/createUser/<string:username>/<string:password>/<string:phone>')
+class CreateUser(SecureResource):
+    """ Unsecure Resource Class: Inherit from Resource """
+
+    def get(self, username, password, phone):
+        return create_user(username, password, phone)

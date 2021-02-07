@@ -20,8 +20,7 @@ cockroachdb = "*"
 werkzeug = "*"
 opencv-python = "*"
 psycopg2-binary = "*"
-pil = "*"
-pillow = "*"
+Pillow = "==2.2.1"
 
 [dev-packages]
 pytest = "*"
@@ -30,4 +29,4 @@ pytest-sugar = "*"
 pytest-cov = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"

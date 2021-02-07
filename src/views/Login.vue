@@ -21,9 +21,9 @@
                             <!-- <small>{{this.error}}</small> -->
                         </div>
                         <div v-if='this.error'>
-                            <div role="alert" class="alert alert-warning"><strong>Aye!</strong> 
-                            {{this.error}} 
-                              </div>   
+                            <div role="alert" class="alert alert-warning"><strong>Aye!</strong>
+                            {{this.error}}
+                              </div>
                         </div>
                         <form role="form">
                             <base-input class="input-group-alternative mb-3"

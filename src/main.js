@@ -6,6 +6,17 @@ import './registerServiceWorker'
 import ArgonDashboard from './plugins/argon-dashboard'
 import './filters'
 
+Vue.mixin({
+  data: function () {
+    return {
+      userGlobal: {
+        'name': '',
+        'phone': ''
+      }
+    }
+  }
+})
+
 Vue.config.productionTip = false
 Vue.use(ArgonDashboard)
 new Vue({

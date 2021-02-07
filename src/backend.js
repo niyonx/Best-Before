@@ -41,5 +41,10 @@ export default {
   checkUser (username = '', password = '') {
     return $axios.get('checkUser/' + username + '/' + password)
       .then(response => response.data)
+  },
+
+  createUser (username = '', password = '', phone = '') {
+    return $axios.get('createUser/' + username + '/' + password + '/' + phone)
+      .then(response => response.data)
   }
 }

@@ -43,7 +43,7 @@ engine = create_engine(
     # For cockroach demo:
     # 'cockroachdb://<username>:<password>@<hostname>:<port>/bank?sslmode=require',
     # For CockroachCloud:
-    'cockroachdb://nigel:bZpGIcHVE-yJ3em_@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=/Users/chelsieng/Documents/Workspace/ExpireNoMore/certs/cc-ca.crt&options=--cluster=frozen-rhino-524',
+    'cockroachdb://nigel:bZpGIcHVE-yJ3em_@free-tier.gcp-us-central1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=certs/cc-ca.crt&options=--cluster=frozen-rhino-524',
     # 'cockroachdb://<username>:<password>@<globalhost>:26257/<cluster_name>.bank?sslmode=verify-full&sslrootcert=<certs_dir>/<ca.crt>',
     echo=True                   # Log SQL queries to stdout
 )
@@ -204,6 +204,8 @@ def create_user(username, password, phone):
 
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
+    
+    return True
 
 def check_user(username, password):
 

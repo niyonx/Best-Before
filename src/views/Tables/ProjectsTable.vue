@@ -41,7 +41,8 @@
            {{row.expiry_date}}
           </td>
            <td>
-            <badge pill :type="row.statusType">{{row.status}}</badge>
+             <!-- success, warning, danger --- safe, expired, warning -->
+            <badge pill :type="getExpiryStatusType(row.expiry_date)">{{getExpiryStatus(row.expiry_date)}}</badge>
           </td>
 
           <td class="text-right">
@@ -79,17 +80,38 @@ export default {
         }).catch(error => {
           this.error = error.message
         })
-    }
-  },
-  callFunction: function () {
-    var currentDate = new Date()
-    alert(currentDate)
-    var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
-    console.log(currentDateWithFormat)
+    },
+    getExpiryStatus (expiryDate) {
+      var currentDate = new Date()
+      var expiryDate = new Date(expiryDate)
+      console.log(currentDate)
+      // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+      var difference = Math.floor((expiryDate - currentDate) / (1000*60*60*24))
+
+      if(difference <= 0 )
+        return 'Expired'
+      else if(difference <= 7)
+        return 'Warning'
+      else
+        return 'Safe'
+    } ,
+    getExpiryStatusType (expiryDate) {
+      var currentDate = new Date()
+      var expiryDate = new Date(expiryDate)
+      console.log(currentDate)
+      // var currentDateWithFormat = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+      var difference = Math.floor((expiryDate - currentDate) / (1000*60*60*24))
+
+      if(difference <= 0 )
+        return 'danger'
+      else if(difference <= 7)
+        return 'warning'
+      else
+        return 'success'
+    } 
   },
   beforeMount () {
     this.getProducts()
-    this.callFunction()
   }
 }
 </script>

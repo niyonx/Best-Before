@@ -181,7 +181,6 @@ export default {
           } else { this.error = 'uh oh, an error happened...' }
           this.expiryLoading = false
         })
-    
     },
     async onBarcodeFileChanged (e) {
       this.selectedBarcodeFile = e.target.files[0]
