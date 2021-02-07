@@ -61,6 +61,7 @@
                                                         label="Expiry Date"
                                                         placeholder="MM-DD-YYYY"
                                                         input-classes="form-control-alternative"
+                                                        :value="expiryLoaded"
                                             />
                                         </div>
                                         <div class="col-lg-3">
@@ -134,6 +135,9 @@ export default {
     },
     brandLoaded () {
       return this.barcodeLoading ? this.articleBrand : ''
+    },
+    expiryLoaded () {
+      return this.expiryLoading ? this.expiryDate : ''
     }
   },
   methods: {
@@ -156,6 +160,28 @@ export default {
     async onExpiryFileChanged (e) {
       this.selectedExpiryFile = e.target.files[0]
       // Calling expiry api
+      let formData = new FormData()
+      formData.append('file', this.selectedExpiryFile)
+      // Calling barcode api
+      await axios
+        .post('api/uploadExpiry', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((response) => {
+          console.log(response)
+          this.expiryLoading = true
+          const data = response.data
+          this.expiryDate = data
+        })
+        .catch(function (error) {
+          if (error.response) {
+            this.error = error.response.data
+          } else { this.error = 'uh oh, an error happened...' }
+          this.expiryLoading = false
+        })
+    
     },
     async onBarcodeFileChanged (e) {
       this.selectedBarcodeFile = e.target.files[0]

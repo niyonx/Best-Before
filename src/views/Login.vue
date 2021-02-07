@@ -18,6 +18,12 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
                             <small>Sign in with credentials</small>
+                            <!-- <small>{{this.error}}</small> -->
+                        </div>
+                        <div v-if='this.error'>
+                            <div role="alert" class="alert alert-warning"><strong>Aye!</strong> 
+                            {{this.error}} 
+                              </div>   
                         </div>
                         <form role="form">
                             <base-input class="input-group-alternative mb-3"
@@ -75,7 +81,7 @@ export default {
           if (responseData == true) {
             this.$router.push('dashboard')
           } else {
-            this.error = 'Aye, invalid username and password combo!'
+            this.error = 'Invalid username or password!'
           }
         }).catch(error => {
           this.error = error.message

@@ -26,7 +26,8 @@
                         <base-input class="input-group-alternative mb-3"
                                     placeholder="Username"
                                     addon-left-icon="ni ni-hat-3"
-                                    v-model="model.username">
+                                    v-model="model.username"
+                                    >
                         </base-input>
 
                         <!-- <base-input class="input-group-alternative mb-3"
@@ -61,7 +62,10 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4">Create account</base-button>
+                            <base-button type="primary" class="my-4"
+                                    @click="createUser(model.username, model.password, model.phone)"
+                            
+                            >Create account</base-button>
                         </div>
                     </form>
                 </div>
@@ -82,6 +86,8 @@
     </div>
 </template>
 <script>
+import $backend from '../backend'
+
 export default {
   name: 'register',
   data () {
@@ -90,7 +96,22 @@ export default {
         username: '',
         phone: '',
         password: ''
-      }
+      },
+      error: ''
+    }
+  },
+  methods: {
+    createUser (username, password,phone) {
+      $backend.createUser(username, password, phone)
+        .then(responseData => {
+          if (responseData == true) {
+            this.$router.push('dashboard')
+          } else {
+            this.error = 'Invalid username or password!'
+          }
+        }).catch(error => {
+          this.error = error.message
+        })
     }
   }
 }
