@@ -58,15 +58,15 @@
             </template>
         </base-nav>
         <!-- Header -->
-        <div class="header bg-gradient-success py-7 py-lg-8">
+        <div class="header bg-gradient-success py-8 py-lg-7">
             <div class="container">
-                <div class="header-body text-center mb-7">
+                <div class="header-body text-center mb-6">
                     <div class="row justify-content-center">
-                        <div class="col-lg-5 col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <h1 class="text-white">Welcome to Best Before!</h1>
                         </div>
                         <img src="@/assets/foodwaste.png" size="150%">
-                         <div class="col-lg-5 col-md-6">
+                         <div class="col-lg-6 col-md-6">
                         <p class="text-lead text-white">Say no more to food waste.</p>
                               </div>
                     </div>
@@ -74,7 +74,11 @@
                             <base-button>Get Started</base-button>
                         </div>
                 </div>
-
+                <div class="header-body text-center mb-6">
+                <!-- <slide-x-right-transition mode="out-in" origin="center top">
+                    <router-view></router-view>
+                </slide-x-right-transition> -->
+                </div>
             </div>
 <!--            <div class="separator separator-bottom separator-skew zindex-100">-->
 <!--                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"-->
@@ -84,11 +88,11 @@
 <!--            </div>-->
         </div>
         <!-- Page content -->
-<!--        <div class="container mt&#45;&#45;8 pb-5">-->
-<!--            <slide-y-up-transition mode="out-in" origin="center top">-->
-<!--                <router-view></router-view>-->
-<!--            </slide-y-up-transition>-->
-<!--        </div>-->
+       <div class="container mt&#45;&#45;8 pb-5 pt-5">
+           <slide-x-right-transition mode="out-in" origin="center top">
+                    <router-view></router-view>
+                </slide-x-right-transition>
+       </div>
         <footer class="section-secondary py-5">
             <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
@@ -122,12 +126,12 @@
     </div>
 </template>
 <script>
-// import { SlideYUpTransition } from 'vue2-transitions'
+import { SlideXRightTransition } from 'vue2-transitions'
 
 export default {
   name: 'auth-layout',
   components: {
-    // SlideYUpTransition
+    SlideXRightTransition
   },
   data () {
     return {

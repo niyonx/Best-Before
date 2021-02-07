@@ -6,6 +6,8 @@ import os
 
 import datefinder
 
+from PIL import Image
+
 # set path to api key here
 """ INPUT PATH TO JSON API KEY"""
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="credentials.json"
@@ -19,10 +21,15 @@ def detect_text(img):
 
     # Uncomment below if path given instead of image
 
-    with io.open(img, 'rb') as image_file:
-        img = image_file.read()
+    # with io.open(img, 'rb') as image_file:
+    #     img = image_file.read()
 
-    image = vision.Image(content=img)
+    img = Image.fromarray(img, 'RGB')
+    img_byte_arr = io.BytesIO()
+    img.save(img_byte_arr, format='PNG')
+    img_byte_arr = img_byte_arr.getvalue()
+
+    image = vision.Image(content=img_byte_arr)
 
     response = client.text_detection(image=image)
     text = response.text_annotations[0].description

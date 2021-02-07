@@ -36,5 +36,10 @@ export default {
   getProducts () {
     return $axios.get(`getProducts`)
       .then(response => response.data)
+  },
+
+  checkUser (username = '', password = '') {
+    return $axios.get('checkUser/' + username + '/' + password)
+      .then(response => response.data)
   }
 }

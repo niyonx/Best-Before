@@ -63,8 +63,7 @@ def create_init_users():
   
     def method(sess):
         new_users = []
-        billion = 1000000000
-        new_id = floor(random.random()*billion)
+        
         new_users.append(
             UserAccounts(
                 user_id = 11,
@@ -74,7 +73,6 @@ def create_init_users():
             )
         )
 
-        new_id = floor(random.random()*billion)
         new_users.append(
             UserAccounts(
                 user_id = 18,
@@ -85,24 +83,6 @@ def create_init_users():
         )
         
         sess.add_all(new_users)
-    
-    return run_transaction(sessionmaker(bind=engine),
-                lambda s: method(s))
-
-def get_products():
-
-    def method(sess):
-        result = []
-        for instance in sess.query(Products).all():
-            result.append({
-                'product_id':instance.product_id,
-                'product_name':instance.product_name,
-                'product_brand':instance.product_brand,
-                'expiry_date':instance.expiry_date
-            }
-          )
-        
-        return result
     
     return run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
@@ -165,12 +145,84 @@ def create_init_products():
     run_transaction(sessionmaker(bind=engine),
                 lambda s: method(s))
 
+def get_products():
+  
+    def method(sess):
+        result = []
+        for instance in sess.query(Products).all():
+            result.append({
+                'product_id':instance.product_id,
+                'product_name':instance.product_name,
+                'product_brand':instance.product_brand,
+                'expiry_date':instance.expiry_date
+            }
+          )
+        
+        return result
+    
+    return run_transaction(sessionmaker(bind=engine),
+                lambda s: method(s))
+
+def create_product(product_name, product_brand, expiry_date, user_id):
+
+    def method(sess):
+        new_products = []
+        billion = 1000000000
+        new_id = floor(random.random()*billion)
+        new_products.append(
+            Products(
+                user_id=user_id,
+                product_id=new_id,
+                product_name=product_name,
+                product_brand=product_brand,
+                expiry_date=expiry_date
+            )
+        )
+        
+        sess.add_all(new_products)
+    
+    run_transaction(sessionmaker(bind=engine),
+                lambda s: method(s))
+
+def create_user(username, password, phone):
+  
+    def method(sess):
+        new_user = []
+        
+        billion = 1000000000
+        new_id = floor(random.random()*billion)
+        new_user.append(
+            UserAccounts(
+                user_id = new_id,
+                username = username,
+                password = password,
+                phone = phone
+            )
+        )
+        
+        sess.add_all(new_user)
+    
+    run_transaction(sessionmaker(bind=engine),
+                lambda s: method(s))
+
+def check_user(username, password):
+
+  def method(sess):
+        user = sess.query(UserAccounts).filter_by(username=username).first()
+
+        if(user and user.password == password):
+            return True
+        return False
+    
+  return run_transaction(sessionmaker(bind=engine),lambda s: method(s))
+
 # print(get_products())
 
-create_init_products()
+# create_init_products()
 
-create_init_users()
+# create_init_users()
 
+print(check_user('niyonx', 'password'))
 
 # run_transaction(sessionmaker(bind=engine),
 #                 lambda s: create_random_products(s))

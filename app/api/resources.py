@@ -12,6 +12,7 @@ from . import api_rest
 
 from .barcode import *
 from .expiry import *
+from .database import *
 import os
 
 class SecureResource(Resource):
@@ -85,3 +86,9 @@ class GetProducts(SecureResource):
         products = get_products()
         return products
 
+@api_rest.route('/checkUser/<string:username>/<string:password>')
+class CheckUser(SecureResource):
+    """ Unsecure Resource Class: Inherit from Resource """
+
+    def get(self, username, password):
+        return check_user(username, password)
