@@ -33,15 +33,15 @@
           <th scope="row">
             <div class="media align-items-center">
               <div class="media-body">
-                <span class="name mb-0 text-sm">{{row.name}}</span>
+                <span class="name mb-0 text-sm">{{row.product_name}}</span>
               </div>
             </div>
           </th>
           <td>
-            {{row.brand}}
+            {{row.product_brand}}
           </td>
           <td>
-           {{row.expiry}}
+           {{row.expiry_date}}
           </td>
            <td>
             <badge pill :type="row.statusType">{{row.status}}</badge>
@@ -64,6 +64,8 @@
   </div>
 </template>
 <script>
+import $backend from '../../backend'
+
 export default {
   name: 'projects-table',
   props: {
@@ -74,44 +76,21 @@ export default {
   },
   data () {
     return {
-      tableData: [
-        {
-          name: 'Argon Design System',
-          brand: '$2500 USD',
-          status: 'warning',
-          statusType: 'warning',
-          expiry: '01-01-2002'
-        },
-        {
-          name: 'Angular Now UI Kit PRO',
-          brand: '$1800 USD',
-          status: 'safe',
-          statusType: 'success',
-          expiry: '10-12-2020'
-        },
-        {
-          name: 'Black Dashboard',
-          brand: '$3150 USD',
-          status: 'expired',
-          statusType: 'danger',
-          expiry: '12-12-1999'
-        },
-        {
-          name: 'React Material Dashboard',
-          brand: '$4400 USD',
-          status: 'safe',
-          statusType: 'success',
-          expiry: '09-13-2020'
-        },
-        {
-          name: 'Vue Paper UI Kit PRO',
-          brand: '$2200 USD',
-          status: 'safe',
-          statusType: 'success',
-          expiry: '12-12-2013'
-        }
-      ]
+      tableData: []
     }
+  },
+  methods: {
+    getProducts () {
+      $backend.getProducts()
+        .then(responseData => {
+          this.tableData = responseData
+        }).catch(error => {
+          this.error = error.message
+        })
+    }
+  },
+  beforeMount () {
+    this.getProducts()
   }
 }
 </script>

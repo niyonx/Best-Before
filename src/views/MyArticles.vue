@@ -70,12 +70,32 @@
     </div>
 </template>
 <script>
+// import $backend from '../backend'
 import ProjectsTable from './Tables/ProjectsTable'
 export default {
   name: 'tables',
+  //   data () {
+  //     return {
+  //       products: []
+  //     }
+  //   },
   components: {
     ProjectsTable
   }
+//   methods: {
+//     getProducts () {
+//       $backend.getProducts()
+//         .then(responseData => {
+//           console.log(responseData)
+//         }).catch(error => {
+//           this.error = error.message
+//         })
+//     }
+//   },
+//   beforeMount () {
+//     this.products = this.getProducts()
+//     console.log(this.products)
+//   }
 }
 </script>
 <style></style>

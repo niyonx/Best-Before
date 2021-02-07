@@ -17,6 +17,8 @@ google-cloud-vision = "*"
 datefinder = "*"
 dates = "*"
 dateparser = "*"
+flask-sqlalchemy = "*"
+cockroachdb = "*"
 
 [dev-packages]
 pytest = "*"
