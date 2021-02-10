@@ -6,34 +6,34 @@ Best Before is an expiry date tracker. It warns you when your item's lifecycle i
 [best-before.tech](http://best-before.tech/)
 
 ## Demo 
-####1. Landing page
+#### 1. Landing page
 ![](app/images/demo/LandingPage.png)
 
-####2. Sign up
+#### 2. Sign up
 ![](app/images/demo/register.png)
 
-####3. Sign in
+#### 3. Sign in
 ![](app/images/demo/login.png)
 
-####4. Dashboard
+#### 4. Dashboard
 ![](app/images/demo/dashboard.png)
 
-####5. Add articles
+#### 5. Add articles
 ![](app/images/demo/NewArticle.png)
 
-####6. Uploading expiry date picture
+#### 6. Uploading expiry date picture
 ![](app/images/demo/upload_expiry.png)
 
-####7. Expiry date recognized
+#### 7. Expiry date recognized
 ![](app/images/demo/expiryRecognition.png)
 
-####8. Uploading barcode picture
+#### 8. Uploading barcode picture
 ![](app/images/demo/barcodeUpload.png)
 
-####9. Item desprition from barcode
+#### 9. Item desprition from barcode
 ![](app/images/demo/automaticBarcode.png)
 
-####10. Added item
+#### 10. Added item
 ![](app/images/demo/addedToArticles.png)
 
 ## How to run project
