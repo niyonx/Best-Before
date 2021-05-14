@@ -40,9 +40,10 @@ Best Before is an expiry date tracker. It warns you when your item's lifecycle i
 
 Clone this repository:
 
-	```
+
 	$ git clone https://github.com/chelsieng/Best-Before.git
-	```
+
+	
 ### Template and Dependencies
 * Setup virtual environment, install dependencies, and activate it:
 
